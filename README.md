@@ -1,6 +1,6 @@
 # Clawdbot VM
 
-Automated setup for running [Clawdbot](https://github.com/anthropics/clawdbot) in an isolated Ubuntu VM using Multipass.
+Automated setup for running [Clawdbot](https://github.com/clawdbot/clawdbot) in an isolated Ubuntu VM using Multipass.
 
 ## Why a VM?
 
