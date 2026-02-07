@@ -27,7 +27,7 @@ curl https://inference.meganova.ai/v1/models \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-Use the exact model ID from the response (e.g. `deepseek-ai/DeepSeek-V3-0324`, `moonshotai/Kimi-K2-Thinking`).
+Use the exact model ID from the response (e.g. `moonshotai/Kimi-K2.5`).
 
 ### 3. Configure OpenClaw
 
@@ -49,15 +49,10 @@ Add the `models` block to your config:
         "api": "openai-completions",
         "models": [
           {
-            "id": "deepseek-ai/DeepSeek-V3-0324",
-            "name": "DeepSeek V3",
+            "id": "moonshotai/Kimi-K2.5",
+            "name": "Kimi K2.5",
             "contextWindow": 128000,
             "maxTokens": 128000
-          },
-          {
-            "id": "moonshotai/Kimi-K2-Thinking",
-            "name": "Kimi K2 Thinking",
-            "contextWindow": 128000
           }
         ]
       }
@@ -66,7 +61,7 @@ Add the `models` block to your config:
   "agents": {
     "defaults": {
       "model": {
-        "primary": "meganova/deepseek-ai/DeepSeek-V3-0324"
+        "primary": "meganova/moonshotai/Kimi-K2.5"
       }
     }
   }
@@ -151,7 +146,7 @@ You can configure multiple providers and switch between them:
         "apiKey": "your-meganova-key",
         "api": "openai-completions",
         "models": [
-          {"id": "deepseek-ai/DeepSeek-V3-0324", "name": "DeepSeek V3", "contextWindow": 128000}
+          {"id": "moonshotai/Kimi-K2.5", "name": "Kimi K2.5", "contextWindow": 128000}
         ]
       }
     }
@@ -160,7 +155,7 @@ You can configure multiple providers and switch between them:
     "defaults": {
       "model": {
         "primary": "anthropic/claude-sonnet-4-20250514",
-        "fallback": "meganova/deepseek-ai/DeepSeek-V3-0324"
+        "fallback": "meganova/moonshotai/Kimi-K2.5"
       }
     }
   }
@@ -215,7 +210,7 @@ Edit `~/.openclaw/openclaw.json`:
 | Speed | Fast | Very Fast | Depends on hardware |
 | Cost | $$$ | $ | Free |
 | Privacy | Cloud | Cloud | Full privacy |
-| Best models | Claude Opus 4.5 | DeepSeek V3, Kimi K2 | Llama 3.3 |
+| Best models | Claude Opus 4.5 | Kimi K2.5 | Llama 3.3 |
 | Context window | 200K | 128K | Varies |
 | Coding | Excellent | Good | Good |
 | Roleplay | Good | Excellent | Good |
@@ -227,7 +222,7 @@ Edit `~/.openclaw/openclaw.json`:
 MegaNova uses vLLM which rejects unknown fields. Use the proxy script (`scripts/meganova_proxy.py`) to strip unsupported parameters.
 
 ### Model not found (404)
-Use the full model ID from `curl https://inference.meganova.ai/v1/models`. For example, use `deepseek-ai/DeepSeek-V3-0324` not `deepseek-v3`.
+Use the full model ID from `curl https://inference.meganova.ai/v1/models`. For example, use `moonshotai/Kimi-K2.5` not `kimi-k2.5`.
 
 ### Connection refused
 ```bash
