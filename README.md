@@ -67,6 +67,14 @@ The VM is created with these specs (edit `install.sh` to change):
 | Disk | 20GB |
 | Swap | 2GB |
 
+## LLM Providers
+
+Clawdbot supports multiple LLM providers including Anthropic, MegaNova, and local models via Ollama. See [docs/providers.md](docs/providers.md) for setup instructions.
+
+## Security
+
+For details on why VM isolation matters and the security measures included, see [docs/security.md](docs/security.md).
+
 ## License
 
 MIT
