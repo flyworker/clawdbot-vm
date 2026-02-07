@@ -12,7 +12,7 @@ import os
 
 app = Flask(__name__)
 
-MEGANOVA_URL = "https://inference.meganova.ai/v1/chat/completions"
+MEGANOVA_URL = "https://api.meganova.ai/v1/chat/completions"
 API_KEY = os.environ.get("MEGANOVA_API_KEY")
 if not API_KEY:
     raise RuntimeError("MEGANOVA_API_KEY environment variable is required")

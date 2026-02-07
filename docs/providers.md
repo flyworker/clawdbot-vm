@@ -23,7 +23,7 @@ OpenClaw supports multiple LLM providers. This guide covers setting up different
 ### 2. Check Available Models
 
 ```bash
-curl https://inference.meganova.ai/v1/models \
+curl https://api.meganova.ai/v1/models \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -44,7 +44,7 @@ Add the `models` block to your config:
   "models": {
     "providers": {
       "meganova": {
-        "baseUrl": "https://inference.meganova.ai/v1",
+        "baseUrl": "https://api.meganova.ai/v1",
         "apiKey": "YOUR_MEGANOVA_API_KEY",
         "api": "openai-completions",
         "models": [
@@ -142,7 +142,7 @@ You can configure multiple providers and switch between them:
         "apiKey": "sk-ant-xxx"
       },
       "meganova": {
-        "baseUrl": "https://inference.meganova.ai/v1",
+        "baseUrl": "https://api.meganova.ai/v1",
         "apiKey": "your-meganova-key",
         "api": "openai-completions",
         "models": [
@@ -222,12 +222,12 @@ Edit `~/.openclaw/openclaw.json`:
 MegaNova uses vLLM which rejects unknown fields. Use the proxy script (`scripts/meganova_proxy.py`) to strip unsupported parameters.
 
 ### Model not found (404)
-Use the full model ID from `curl https://inference.meganova.ai/v1/models`. For example, use `moonshotai/Kimi-K2.5` not `kimi-k2.5`.
+Use the full model ID from `curl https://api.meganova.ai/v1/models`. For example, use `moonshotai/Kimi-K2.5` not `kimi-k2.5`.
 
 ### Connection refused
 ```bash
 # Check if the API is reachable
-curl https://inference.meganova.ai/v1/models \
+curl https://api.meganova.ai/v1/models \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
