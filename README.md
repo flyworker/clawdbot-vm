@@ -1,10 +1,10 @@
-# Clawdbot VM
+# OpenClaw VM
 
-Automated setup for running [Clawdbot](https://github.com/clawdbot/clawdbot) in an isolated Ubuntu VM using Multipass.
+Automated setup for running [OpenClaw](https://docs.openclaw.ai/) in an isolated Ubuntu VM using Multipass.
 
 ## Why a VM?
 
-Running Clawdbot in an isolated VM provides:
+Running OpenClaw in an isolated VM provides:
 - Security isolation from your host system
 - Clean environment with controlled dependencies
 - Easy teardown and recreation
@@ -13,7 +13,7 @@ Running Clawdbot in an isolated VM provides:
 
 - Linux or macOS host
 - sudo access
-- Anthropic API key (or Claude Pro OAuth)
+- LLM API key (Anthropic, MegaNova, or other OpenAI-compatible provider)
 
 ## Quick Start
 
@@ -29,7 +29,7 @@ cd clawdbot-vm
 multipass shell clawdbot
 
 # Complete setup
-clawdbot onboard
+openclaw onboard
 ```
 
 ## What the Installer Does
@@ -37,7 +37,7 @@ clawdbot onboard
 1. **Creates VM** - Ubuntu 22.04 with 2 CPUs, 4GB RAM, 20GB disk
 2. **Secures VM** - UFW firewall, fail2ban
 3. **Installs dependencies** - 2GB swap, Node.js 22
-4. **Installs Clawdbot** - via npm globally
+4. **Installs OpenClaw** - via npm globally
 5. **Enables persistence** - user lingering for background services
 
 ## VM Management
@@ -45,6 +45,9 @@ clawdbot onboard
 ```bash
 # Enter the VM
 multipass shell clawdbot
+
+# Update OpenClaw (inside the VM)
+sudo npm install -g openclaw@latest
 
 # Stop the VM
 multipass stop clawdbot
@@ -69,7 +72,7 @@ The VM is created with these specs (edit `install.sh` to change):
 
 ## LLM Providers
 
-Clawdbot supports multiple LLM providers including Anthropic, MegaNova, and local models via Ollama. See [docs/providers.md](docs/providers.md) for setup instructions.
+OpenClaw supports multiple LLM providers including Anthropic, MegaNova, and local models via Ollama. See [docs/providers.md](docs/providers.md) for setup instructions.
 
 ## Security
 

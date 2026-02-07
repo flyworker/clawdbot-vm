@@ -61,8 +61,8 @@ echo "--- Installing Node.js 22 ---"
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs
 
-echo "--- Installing Clawdbot ---"
-sudo npm install -g clawdbot@latest
+echo "--- Installing OpenClaw ---"
+sudo npm install -g openclaw@latest
 
 echo "--- Enabling service persistence ---"
 sudo loginctl enable-linger "$USER"
@@ -70,5 +70,5 @@ sudo loginctl enable-linger "$USER"
 echo ""
 echo "=== Installation complete! ==="
 echo "Run: multipass shell clawdbot"
-echo "Then: clawdbot onboard"
+echo "Then: openclaw onboard"
 '

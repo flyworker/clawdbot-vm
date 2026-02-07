@@ -1,10 +1,10 @@
-# Why Run Clawdbot in a VM?
+# Why Run OpenClaw in a VM?
 
-Running AI assistants like Clawdbot directly on your local machine poses security risks. This document explains why VM isolation is the safer approach.
+Running AI assistants like OpenClaw directly on your local machine poses security risks. This document explains why VM isolation is the safer approach.
 
 ## The Problem with Local Installation
 
-When you install Clawdbot (or any AI agent) locally, it runs with your user permissions. This means it can:
+When you install OpenClaw (or any AI agent) locally, it runs with your user permissions. This means it can:
 
 - Read your SSH keys (`~/.ssh/`)
 - Access cloud credentials (`~/.aws/`, `~/.config/gcloud/`)
@@ -17,7 +17,7 @@ AI agents are powerful precisely because they can take actions on your behalf. T
 
 ## VM Isolation: A Security Sandbox
 
-Running Clawdbot in a VM creates a security boundary:
+Running OpenClaw in a VM creates a security boundary:
 
 ```
 ┌─────────────────────────────────────────┐
@@ -27,10 +27,10 @@ Running Clawdbot in a VM creates a security boundary:
 │  └── Everything you care about          │
 │                                         │
 │  ┌───────────────────────────────────┐  │
-│  │  Multipass VM (clawdbot)          │  │
+│  │  Multipass VM (openclaw)          │  │
 │  │  ├── Isolated filesystem          │  │
 │  │  ├── Separate network stack       │  │
-│  │  ├── Only clawdbot + deps         │  │
+│  │  ├── Only openclaw + deps         │  │
 │  │  └── Disposable                   │  │
 │  └───────────────────────────────────┘  │
 └─────────────────────────────────────────┘
@@ -52,7 +52,7 @@ The VM can only see its own filesystem. Your host machine's sensitive data is in
 ## Worst Case Scenarios
 
 ### Local Installation
-A compromised or buggy clawdbot could:
+A compromised or buggy openclaw could:
 - Exfiltrate your SSH keys to an attacker
 - Read browser session cookies and hijack accounts
 - Access cryptocurrency wallet files
@@ -60,14 +60,14 @@ A compromised or buggy clawdbot could:
 - Install persistent backdoors
 
 ### VM Installation
-A compromised clawdbot can only:
+A compromised openclaw can only:
 - Damage files inside the VM
 - Use your Anthropic API credits
 
 **Solution**: Delete the VM and create a new one. Your host is untouched.
 
 ```bash
-multipass delete clawdbot && multipass purge
+multipass delete openclaw && multipass purge
 ./install.sh
 ```
 
@@ -78,14 +78,14 @@ This setup includes:
 1. **UFW Firewall** - Denies all incoming connections except SSH
 2. **fail2ban** - Blocks brute force attacks
 3. **Minimal attack surface** - Only essential packages installed
-4. **Non-root execution** - Clawdbot runs as unprivileged user
+4. **Non-root execution** - OpenClaw runs as unprivileged user
 
 ## Best Practices
 
-1. **Use a dedicated API key** - Create a separate Anthropic API key for clawdbot
+1. **Use a dedicated API key** - Create a separate Anthropic API key for openclaw
 2. **Set spending limits** - Configure usage limits in Anthropic console
 3. **Keep the VM updated** - Run `sudo apt update && sudo apt upgrade` periodically
-4. **Review permissions** - Understand what messaging platforms clawdbot connects to
+4. **Review permissions** - Understand what messaging platforms openclaw connects to
 5. **Disposable mindset** - Treat the VM as ephemeral; rebuild if in doubt
 
 ## Trade-offs
