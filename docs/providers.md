@@ -74,16 +74,6 @@ Add the `models` block to your config:
 openclaw gateway restart
 ```
 
-### Known Issues
-
-MegaNova uses vLLM which is strict about unknown request fields. If you get HTTP 400 errors about unsupported fields (e.g. `store`), use the included proxy script which strips unsupported parameters:
-
-```bash
-pip3 install flask requests
-MEGANOVA_API_KEY=your-key python3 scripts/meganova_proxy.py
-```
-
-Then set `baseUrl` to `http://127.0.0.1:4000/v1` in your config.
 
 ## Anthropic Setup
 
@@ -217,9 +207,6 @@ Edit `~/.openclaw/openclaw.json`:
 | Backend | Proprietary | vLLM | Ollama |
 
 ## Troubleshooting
-
-### HTTP 400 from MegaNova
-MegaNova uses vLLM which rejects unknown fields. Use the proxy script (`scripts/meganova_proxy.py`) to strip unsupported parameters.
 
 ### Model not found (404)
 Use the full model ID from `curl https://api.meganova.ai/v1/models`. For example, use `moonshotai/Kimi-K2.5` not `kimi-k2.5`.
